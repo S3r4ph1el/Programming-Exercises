@@ -1,1 +1,1 @@
-# My solutions to Beecrowd exercises in C99.
+# My solutions to Beecrowd exercises in C.
