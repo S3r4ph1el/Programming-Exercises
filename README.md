@@ -1,1 +1,1 @@
-# Minhas resoluções dos exercícios do Beecrowd em C99.
+# My solutions to Beecrowd exercises in C99.
