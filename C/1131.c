@@ -1,38 +1,46 @@
 #include <stdio.h>
- 
-int main() {
- 
+
+int main()
+{
+
     int x, y, end;
     int inter = 0, gremio = 0, z = 0, contador = 0;
-    
-    do{
+
+    do
+    {
         scanf("%d %d", &x, &y);
-        
-        if(x > y){
+
+        if (x > y)
+        {
             inter++;
         }
-        else if(y > x){
+        else if (y > x)
+        {
             gremio++;
         }
-        else{
+        else
+        {
             z++;
         }
         contador++;
         printf("Novo grenal (1-sim 2-nao)\n");
         scanf("%d", &end);
-        
-    }while(end != 2);
-    
+
+    } while (end != 2);
+
     printf("%d grenais\nInter:%d\nGremio:%d\nEmpates:%d\n", contador, inter, gremio, z);
-    if(gremio > inter){
+    if (gremio > inter)
+    {
         printf("Gremio venceu mais\n");
     }
-    else if(inter > gremio){
+    else if (inter > gremio)
+    {
         printf("Inter venceu mais\n");
     }
-    else{
+    else
+    {
         printf("Nao houve vencedor\n");
     }
- 
+
     return 0;
 }
