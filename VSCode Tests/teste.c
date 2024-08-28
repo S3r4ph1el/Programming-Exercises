@@ -1,45 +1,52 @@
 #include <stdio.h>
 
-int original_b, original_a;
-
-int max_divisor(int a, int b)
-{
-
-    if (original_a % b == 0 && original_b % b == 0)
-    {
-        return b;
-    }
-    else
-    {
-        return max_divisor(b, a % b);
-    }
-}
-
 int main()
 {
 
-    int n, f1, f2;
-    scanf("%d", &n);
+    int etapas, e1, e2, s1, s2;
 
-    for (int i = 0; i < n; i++)
+    while (scanf("%d", &etapas) != EOF)
     {
+        scanf("%d %d", &e1, &e2);
 
-        scanf("%d %d", &f1, &f2);
+        int line1[etapas], line2[etapas], trans1[etapas - 1], trans2[etapas - 1];
 
-        if (f1 > f2)
+        for (int i = 0; i < etapas; i++)
         {
-            original_a = f1;
-            original_b = f2;
-
-            printf("%d\n", max_divisor(f1, f2));
+            scanf("%d", &line1[i]);
         }
-        else
+
+        for (int i = 0; i < etapas; i++)
         {
-            original_a = f2;
-            original_b = f1;
-
-            printf("%d\n", max_divisor(f2, f1));
+            scanf("%d", &line2[i]);
         }
+
+        for (int i = 0; i < etapas - 1; i++)
+        {
+            scanf("%d", &trans1[i]);
+        }
+
+        for (int i = 0; i < etapas - 1; i++)
+        {
+            scanf("%d", &trans2[i]);
+        }
+
+        scanf("%d %d", &s1, &s2);
+
+        int dp1[etapas], dp2[etapas];
+
+        dp1[0] = e1 + line1[0];
+        dp2[0] = e2 + line2[0];
+
+        for (int i = 1; i < etapas; i++)
+        {
+            dp1[i] = line1[i] + (dp1[i - 1] < dp2[i - 1] + trans2[i - 1] ? dp1[i - 1] : dp2[i - 1] + trans2[i - 1]);
+            dp2[i] = line2[i] + (dp2[i - 1] < dp1[i - 1] + trans1[i - 1] ? dp2[i - 1] : dp1[i - 1] + trans1[i - 1]);
+        }
+
+        int menor_tempo = (dp1[etapas - 1] + s1 < dp2[etapas - 1] + s2) ? dp1[etapas - 1] + s1 : dp2[etapas - 1] + s2;
+
+        printf("%d\n", menor_tempo);
     }
 
     return 0;
