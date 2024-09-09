@@ -1,5 +1,8 @@
 #include <stdio.h>
 #include <string.h>
+
+#define pause() printf("\nPress Enter to continue..."), getchar()
+
 typedef struct
 {
 
@@ -36,7 +39,7 @@ int main()
                 pos = 0;
             }
         }
-        seq[tam].string[pos] = '\0';
+        seq[tam].string[pos] = '\0'; // Finaliza a última palavra
         tam++;
 
         Data aux_2;
